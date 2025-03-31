@@ -1,6 +1,6 @@
 # SAST (Static application security testing) Energy Monitor
 
-[//]: # ([![PyPI version]&#40;https://badge.fury.io/py/scan-energy-monitor.svg&#41;]&#40;https://badge.fury.io/py/scan-energy-monitor&#41; <!-- Optional: Add this once published -->)
+[![PyPI version](https://badge.fury.io/py/sast-energy-monitor.svg)](https://pypi.org/project/sast-energy-monitor/)
 
 A command-line tool to measure the energy consumption of static analysis scans (Bandit, Semgrep) on your codebase using Energibridge, with clear, colored output.
 
@@ -116,7 +116,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contributors
 Sustainable Software Engineering Group 10, TU Delft:
+- Yulin Chen
 - Ayush Kuruvilla
 - Sahar Marossi
 - Andrea Onofrei
-- Yulin Chen

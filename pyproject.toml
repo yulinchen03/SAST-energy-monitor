@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sast-energy-monitor" # Keep your chosen distribution name
-version = "0.1.0"
+version = "0.1.3"
 authors = [
+    { name="Yulin Chen", email="yulinchen@tudelft.nl" },
   { name="Ayush Kuruvilla", email="akuruvilla@tudelft.nl" },
   { name="Sahar Marossi", email="s.marossi@student.tudelft.nl" },
   { name="Andrea Onofrei", email="a.onofrei@tudelft.nl" },
-  { name="Yulin Chen", email="yulinchen@tudelft.nl" },
 ]
 description = "A CLI tool to measure energy consumption of Bandit and Semgrep scans using Energibridge."
 readme = "README.md"

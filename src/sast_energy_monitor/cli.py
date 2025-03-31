@@ -163,6 +163,10 @@ def run_measurement(energibridge_path: Path, scan_cmd: str, tool_name: str, conf
 
             # --- Process successful run (exit code 0) ---
             print(Fore.GREEN + Style.BRIGHT + f"\n--- {tool_name.capitalize()} Scan Successful & Energy Summary (Exit Code 0) ---")
+            if result.stderr:
+                # stderr might contain warnings even on success
+                print(Fore.YELLOW + "\n--- Standard Error Output (Warnings/Info) ---")
+                print(result.stderr.strip())
             if result.stdout:
                 lines = result.stdout.strip().splitlines()
                 for line in lines:
@@ -170,10 +174,6 @@ def run_measurement(energibridge_path: Path, scan_cmd: str, tool_name: str, conf
                         print(Fore.MAGENTA + Style.BRIGHT + line) # Highlight energy summary
                     else:
                         print(line) # Print normal tool output
-            if result.stderr:
-                # stderr might contain warnings even on success
-                print(Fore.YELLOW + "\n--- Standard Error Output (Warnings/Info) ---")
-                print(result.stderr.strip())
 
         except subprocess.CalledProcessError as e:
             # --- Handle known non-zero exit codes ---
@@ -197,15 +197,6 @@ def run_measurement(energibridge_path: Path, scan_cmd: str, tool_name: str, conf
             elif tool_name in ['bandit', 'semgrep'] and e.returncode == expected_findings_exit_code:
                 print(Fore.YELLOW + Style.BRIGHT + f"\n--- {tool_name.capitalize()} Scan Found Issues (Exit Code {e.returncode}) ---")
                 output_found = False
-                if e.stdout:
-                    output_found = True
-                    print(Style.BRIGHT + "--- Standard Output & Energibridge Summary ---")
-                    lines = e.stdout.strip().splitlines()
-                    for line in lines:
-                         if "Energy consumption in joules:" in line:
-                              print(Fore.MAGENTA + Style.BRIGHT + line) # Highlight energy summary
-                         else:
-                              print(line) # Print normal tool output
                 if e.stderr:
                     # Avoid duplicate headers if stderr also contains the summary line (less likely)
                     print_stderr_header = True
@@ -216,6 +207,16 @@ def run_measurement(energibridge_path: Path, scan_cmd: str, tool_name: str, conf
                          print(Style.BRIGHT + "\n--- Standard Error Output ---")
                     print(e.stderr.strip())
                     output_found = True
+
+                if e.stdout:
+                    output_found = True
+                    print(Style.BRIGHT + "--- Standard Output & Energibridge Summary ---")
+                    lines = e.stdout.strip().splitlines()
+                    for line in lines:
+                         if "Energy consumption in joules:" in line:
+                              print(Fore.MAGENTA + Style.BRIGHT + line) # Highlight energy summary
+                         else:
+                              print(line) # Print normal tool output
 
                 if not output_found:
                     print("[No output captured on stdout or stderr]")
