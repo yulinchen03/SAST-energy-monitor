@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sast-energy-monitor" # Keep your chosen distribution name
-version = "0.1.3"
+version = "0.1.5"
 authors = [
     { name="Yulin Chen", email="yulinchen@tudelft.nl" },
   { name="Ayush Kuruvilla", email="akuruvilla@tudelft.nl" },

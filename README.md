@@ -14,9 +14,9 @@ This tool wraps `bandit` or `semgrep` scans within an `energibridge` measurement
 
 ## Prerequisites
 
-1.  **Python:** Version 3.8 or higher.
+- **Python:** Version 3.8 or higher.
 
-2.  **Energibridge:**
+- **Energibridge:**
     *   You must have the `energibridge.exe` (or your OS equivalent) executable installed and know its path. Energibridge needs to be obtained separately from its source.
     *   **Windows Setup (RAPL Service):** Energibridge often relies on the RAPL (Running Average Power Limit) service to access energy data on Windows. If you haven't configured this before, you may need to install and start the service using **Administrator privileges**:
         ```powershell
@@ -28,30 +28,24 @@ This tool wraps `bandit` or `semgrep` scans within an `energibridge` measurement
         # Start the service
         sc start rapl
         ```
+        * Download LibreHardwareMonitor.sys from here: https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/releases
         *   **Note:** You only need to do this *once*. Verify the path to `LibreHardwareMonitor.sys` (which often comes with tools like LibreHardwareMonitor or potentially Energibridge's dependencies).
         *   You can test if Energibridge is working correctly by running a simple command like `energibridge.exe --summary timeout 5` in your terminal (as Admin if needed).
 
-3.  **Bandit / Semgrep:**
+- **Bandit / Semgrep:**
     *   The specific scanner (`bandit` or `semgrep`) you intend to use must be installed in your Python environment and accessible from your system's PATH.
     *   Install them if needed:
+  
         ```bash
         pip install bandit semgrep
         ```
 
 ## Installation
 
-**From PyPI (Recommended once published):**
+**From PyPI:**
 
 ```bash
 pip install sast_energy_monitor
-```
-
-**From Source (for development or local use):**
-```bash
-# Clone the repository (replace with actual URL if available)
-# git clone https://github.com/yourusername/scan-energy-monitor.git
-# cd scan-energy-monitor
-pip install .
 ```
 
 ## Usage
@@ -75,13 +69,13 @@ Arguments:
 
 Example:
 ```bash
-# On Windows (using PowerShell escape character `)
+# On Windows
 sast_energy_monitor --energibridge-path C:\Tools\energibridge.exe
             --repo-path C:\MyProjects\MyApp
             --tool bandit
             --config-level strict
 
-# On Linux/macOS (using \)
+# On Linux/macOS
 sast_energy_monitor --energibridge-path /usr/local/bin/energibridge \
             --repo-path ~/projects/my_app \
             --tool semgrep \
@@ -104,10 +98,10 @@ This tool uses internal configuration files:
 
     - strict: Uses the Semgrep Registry ruleset p/bandit.
 
-You currently cannot override these configurations via command-line arguments.
+Currently it is not possible to override these configurations via command-line arguments.
 
 ## Important Notes
-- Administrator Privileges: Depending on your system configuration and how Energibridge accesses hardware sensors, you might need to run the scan-energy command itself with Administrator/root privileges for Energibridge to function correctly. Test without first, but if you encounter errors accessing energy data, try running as Admin.
+- Administrator Privileges: You need to run the sast-energy-monitor command itself with Administrator/root privileges for Energibridge to function correctly.
 
 - The accuracy of energy measurements depends heavily on Energibridge's capabilities and the underlying hardware support (like Intel RAPL).
 
