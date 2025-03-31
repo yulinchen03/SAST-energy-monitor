@@ -1,0 +1,12 @@
+# MANIFEST.in
+
+# Include essential metadata files
+include README.md
+include LICENSE
+
+# Force inclusion of all files under the configs directory
+# Path is relative to this MANIFEST.in file
+graft src/sast_energy_monitor/configs
+
+# Optional: Exclude common unwanted files
+global-exclude *.py[cod] __pycache__ *.so *.dylib .DS_Store

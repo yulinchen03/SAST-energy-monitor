@@ -1,0 +1,18 @@
+# .bandit_basic
+
+# Exclude common non-code directories
+exclude_dirs:
+  - tests
+  - migrations
+  - venv
+  - .venv
+  - __pycache__
+  - build
+  - dist
+
+# Only run basic security tests
+tests:
+  - B101  # assert_used
+  - B102  # exec_used
+
+
