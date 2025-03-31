@@ -1,4 +1,4 @@
-# Scan Energy Monitor
+# SAST (Static application security testing) Energy Monitor
 
 [//]: # ([![PyPI version]&#40;https://badge.fury.io/py/scan-energy-monitor.svg&#41;]&#40;https://badge.fury.io/py/scan-energy-monitor&#41; <!-- Optional: Add this once published -->)
 

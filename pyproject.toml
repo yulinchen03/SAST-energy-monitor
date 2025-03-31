@@ -41,9 +41,9 @@ dependencies = [
 where = ["src"]  # Look for packages in the src directory
 
 [project.urls]
-"Homepage" = "https://github.com/Ayushkuruvilla/Energy_consumption"
-"Bug Tracker" = "https://github.com/Ayushkuruvilla/Energy_consumption/issues"
-"Repository" = "https://github.com/Ayushkuruvilla/Energy_consumption.git"
+"Homepage" = "https://github.com/yulinchen03/SAST-energy-monitor"
+"Bug Tracker" = "https://github.com/yulinchen03/SAST-energy-monitor/issues"
+"Repository" = "https://github.com/yulinchen03/SAST-energy-monitor.git"
 
 # Defines the command-line script entry point
 [project.scripts]
